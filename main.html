@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Journey | 3D Memory Tunnel</title>
+    <link rel="stylesheet" href="css/main_scene.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Dancing+Script:wght@600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Screen တစ်ချက်နှိပ်ဖို့ အသိပေးတဲ့ စာသားလေးအတွက် styling */
+        .click-hint {
+            font-size: 0.9rem;
+            color: #ff758c;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loader">
+        <div class="heart-loader"></div>
+        <p>Gathering our memories...</p>
+    </div>
+
+    <canvas id="three-canvas"></canvas>
+
+    <div id="ui-layer">
+        <h1 class="scene-title">မောင်တို့ရဲ့ ၃နှစ်ပြည့်နေ့လေး..</h1>
+
+        <div class="instructions">
+            <p>ဆွဲကြည့် မောင့်အသဲ</p>
+            <p class="click-hint">ကြိုက်တဲ့နေရာကို တစ်ချက်နှိပ်ပေးအသံကြားရအောင်</p>
+            <div class="mouse-icon"></div>
+        </div>
+
+        <div style="display: none;">
+            <video id="video1" src="assets/videos/video1.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video2" src="assets/videos/video2.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video3" src="assets/videos/video3.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video4" src="assets/videos/video4.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video5" src="assets/videos/video5.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video6" src="assets/videos/video6.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video7" src="assets/videos/video7.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video8" src="assets/videos/video8.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video9" src="assets/videos/video9.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video10" src="assets/videos/video10.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video11" src="assets/videos/video11.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video12" src="assets/videos/video12.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video13" src="assets/videos/video13.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video14" src="assets/videos/video14.mp4" loop muted playsinline crossorigin="anonymous"></video>
+            <video id="video15" src="assets/videos/video15.mp4" loop muted playsinline crossorigin="anonymous"></video>
+
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import { initScene, unmuteVideos } from './js/main_three.js';
+
+        // 1. Scene ကို စတင်ပတ်မယ်
+        try {
+            initScene();
+
+            // 2. Loading Screen ကို ဖျောက်မယ် (Video များတဲ့အတွက် ၃ စက္ကန့် စောင့်တာ ပိုစိတ်ချရပါတယ်)
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                if (loader) {
+                    loader.classList.add('fade-out');
+                    setTimeout(() => loader.style.display = 'none', 1000);
+                }
+            }, 3000);
+
+        } catch (error) {
+            console.error("Initialization error:", error);
+            const loader = document.getElementById('loader');
+            if (loader) loader.style.display = 'none';
+        }
+
+        // 3. Audio Activation
+        window.addEventListener('click', () => {
+            unmuteVideos();
+            const hint = document.querySelector('.click-hint');
+            if (hint) hint.style.display = 'none';
+        }, { once: true });
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Private Space | Anniversary</title>
+    <link rel="stylesheet" href="css/auth.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Inter:wght@300;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="login-container">
+        <div class="glass-card">
+            <h1 class="title">မောင့်ရဲ့ရှယ် Plan Anni</h1>
+
+
+            <form id="auth-form">
+                <div class="input-group">
+                    <label for="anniversary">မောင်တို့ရဲ့ Anniversary Date</label>
+                    <input type="date" id="anniversary" required>
+                </div>
+
+                <div class="input-row">
+                    <div class="input-group">
+                        <label for="bf-nick">မောင့် Nickname</label>
+                        <input type="text" id="bf-nick" placeholder="မောင့်ကိုခေါ်တဲ့နာမည်..." required>
+                    </div>
+                    <div class="input-group">
+                        <label for="gf-nick">သဲ Nickname</label>
+                        <input type="text" id="gf-nick" placeholder="သဲကိုခေါ်တဲ့နာမည်..." required>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" id="enter-btn">
+                        <span>❤</span>
+                    </button>
+                    <p class="btn-label">မောင့်အသဲကိုဖွင့်ကြည့်</p>
+                </div>
+            </form>
+
+            <p id="error-message" class="hidden">အဖြေမှားနေတယ် သဲလေး... ပြန်စဉ်းစားကြည့်ဦးနော် ❤️</p>
+        </div>
+    </div>
+
+    <div class="bg-blobs">
+        <div class="blob-1"></div>
+        <div class="blob-2"></div>
+    </div>
+
+    <script src="js/login_logic.js"></script>
+</body>
+
+</html>
